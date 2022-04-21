@@ -1,0 +1,36 @@
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form [formGroup]="form" (submit)="onCarCreate()" *ngIf="!isLoading">
+    <mat-form-field class="car-create-field" appearance="fill">
+      <mat-label>Model</mat-label>
+      <input
+        matInput
+        placeholder="Enter model name"
+        formControlName="model"
+        >
+        <mat-error *ngIf="form.get('model')?.invalid">Please enter model name</mat-error>
+    </mat-form-field>
+    <mat-form-field class="car-create-field" appearance="fill">
+      <mat-label>Year</mat-label>
+      <input
+        matInput
+        placeholder="Enter year"
+        formControlName="year"
+        required>
+        <mat-error *ngIf="form.get('year')?.invalid">Please enter year value</mat-error>
+    </mat-form-field>
+    <div>
+      <button mat-stroked-button type="button" (click)="filePicker.click()">Pick Image</button>
+      <input type="file" #filePicker (change)="onImagePicked($event)">
+    </div>
+    <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image')?.valid">
+      <img [src]="imagePreview" [alt]="form.value.model">
+    </div>
+    <mat-error *ngIf="form.get('image')?.invalid">Please pick an image</mat-error>
+    <hr/>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit">Save Car</button>
+  </form>
+</mat-card>
