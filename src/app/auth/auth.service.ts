@@ -41,16 +41,21 @@ export class AuthService {
   login(email:string, password:string){
     const user:AuthData = { email: email, password: password };
     this.http.post<{token:string, expiresIn:string, userId:string}>(`${BACKEND_URL}/login`, user)
-    .subscribe(response => {
-      this.token = response.token;
-      if (this.token){
-        this.isAuthenticated = true;
-        this.authStatusListener.next(true);
-        this.saveAuthData(this.token, response.expiresIn, response.userId);
-        this.userId = response.userId;
-        this.router.navigate(['/'])
+    .subscribe({
+      next: response => {
+        this.token = response.token;
+        if (this.token){
+          this.isAuthenticated = true;
+          this.authStatusListener.next(true);
+          this.saveAuthData(this.token, response.expiresIn, response.userId);
+          this.userId = response.userId;
+          this.router.navigate(['/'])
+        }
+      },
+      error: error => {
+        this.authStatusListener.next(false);
       }
-    });
+  });
   }
 
   logout(){

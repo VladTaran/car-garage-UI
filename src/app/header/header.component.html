@@ -1,12 +1,14 @@
 <mat-toolbar color="primary">
-  <span routerLink="/">My Garage</span>
+  <span class="home" (click)="onHomeClick()">My Garage</span>
   <span class="spacer"></span>
   <ul>
     <li *ngIf="isUserAuthenticated">
       <a mat-button routerLink="/create" routerLinkActive="mat-accent">Create Car</a>
     </li>
     <li *ngIf="!isUserAuthenticated">
-      <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">Login</a>
+      <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">
+        <mat-icon>power_settings_new</mat-icon>
+        Login</a>
     </li>
     <li *ngIf="!isUserAuthenticated">
       <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a>

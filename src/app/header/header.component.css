@@ -19,3 +19,8 @@ a{
   flex: 1 1 auto;
 
 }
+
+.home{
+  cursor: pointer;
+  font-family: cursive;
+}

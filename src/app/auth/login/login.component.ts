@@ -11,18 +11,22 @@ import { AuthService } from "../auth.service";
 export class LoginComponent implements OnInit, OnDestroy{
   isLoading:boolean = false;
   private authStatusSub?:Subscription;
+  loginValid:boolean = true;
 
   constructor(private authService:AuthService){}
 
   ngOnInit() {
     this.authStatusSub = this.authService.getAuthStatusListener()
       .subscribe({
-        next: autStatus => { this.isLoading = false }
-      });
-
+        next: status => {
+          this.loginValid = status;
+        }
+      })
   }
 
   onLogin(form:NgForm){
+    this.loginValid = true;
+
     if (form.invalid){
       return;
     }
