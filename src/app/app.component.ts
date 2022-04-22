@@ -11,7 +11,7 @@ export class AppComponent implements OnInit{
 
   constructor(private authService: AuthService){}
 
-  ngOnInit(): void {
+  ngOnInit(){
     this.authService.autoAuthUser();
   }
 
