@@ -37,6 +37,13 @@ export class HeaderComponent implements OnInit, OnDestroy {
     this.router.navigate(['/']);
   }
 
+  onAccountLinkClick(){
+    if (!this.isUserAuthenticated){
+      return;
+    }
+    this.router.navigate([`/users/${this.authService.getUserId()}`]);
+  }
+
   ngOnDestroy(){
     this.authListenerSubs.unsubscribe();
   }

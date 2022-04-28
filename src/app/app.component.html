@@ -1,5 +1,18 @@
-<app-header></app-header>
+<header class="m-header">
+  <app-header></app-header>
+</header>
 <main>
-  <router-outlet></router-outlet>
+  <div class="m-container">
+    <div class="m-nav">
+      <nav-bar></nav-bar>
+    </div>
+    <div class="m-page">
+      <div class="m-page-header">
+        <page-header [title]="title"></page-header>
+      </div>
+      <div class="m-content-block">
+        <router-outlet (activate)="setHeader()"></router-outlet>
+      </div>
+    </div>
+  </div>
 </main>
-

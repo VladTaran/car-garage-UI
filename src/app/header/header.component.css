@@ -3,6 +3,35 @@ mat-card{
  margin: auto;
 }
 
+mat-toolbar{
+  height: 50px;
+  background-color: black;
+}
+
+mat-toolbar span{
+  color: white;
+}
+
+.logout-btn{
+  color: white;
+}
+
+.user-icon{
+  display: flex;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  padding: 10px;
+  opacity: 1;
+  cursor: pointer;
+}
+
+.user-icon-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 ul {
   list-style: none;
   padding: 0;

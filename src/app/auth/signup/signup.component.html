@@ -16,6 +16,19 @@
         <mat-error *ngIf="emailInput.invalid">Please enter email</mat-error>
     </mat-form-field>
     <mat-form-field class="car-create-field" appearance="fill">
+      <mat-label>Username</mat-label>
+      <input
+        matInput
+        placeholder="Enter username"
+        name="username"
+        ngModel
+        #usernameInput="ngModel"
+        required
+        username
+        >
+        <mat-error *ngIf="usernameInput.invalid">Please unique username</mat-error>
+    </mat-form-field>
+    <mat-form-field class="car-create-field" appearance="fill">
       <mat-label>Password</mat-label>
       <input
         type="password"

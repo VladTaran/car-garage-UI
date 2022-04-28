@@ -12,13 +12,19 @@ import { ErrorInterceptor } from './error-interceptor';
 import { ErrorComponent } from './error/error.component';
 import { AngularMaterialModule } from './angular-material.module';
 import { CarsModule } from './cars/cars.module';
+import { UsersModule } from './user/users.module';
+import { PageModule } from './page/page.module';
+import { PageHeaderComponent } from './page/header/page-header.component';
+import { NavBarComponent } from './page/navigation/nav-bar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    ErrorComponent
+    ErrorComponent,
+    PageHeaderComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +32,9 @@ import { CarsModule } from './cars/cars.module';
     BrowserAnimationsModule,
     AngularMaterialModule,
     HttpClientModule,
-    CarsModule
+    CarsModule,
+    UsersModule,
+    PageModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },

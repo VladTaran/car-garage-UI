@@ -1,0 +1,9 @@
+.m-title{
+  margin: 0;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -.02em;
+  font-weight: 700;
+  font-family: sans-serif, color-emoji, system-ui;
+  word-wrap: break-word;
+}
