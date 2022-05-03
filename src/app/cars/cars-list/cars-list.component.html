@@ -5,7 +5,7 @@
       {{ car.model }}
     </mat-expansion-panel-header>
     <div class="car-image">
-      <img [src]="car.imagePath" [alt]="car.model">
+      <img [src]="GetImageFileUrl(car.imageId)" [alt]="car.model">
     </div>
     <p>{{ car.year }}</p>
     <mat-action-row *ngIf="isUserAuthenticated && userId === car.createdby">

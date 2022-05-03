@@ -5,7 +5,7 @@ import { Subject } from "rxjs";
 import { Router } from "@angular/router";
 import { environment } from '../../environments/environment';
 
-const BACKEND_URL = `${environment.apiUrl}/user`
+const BACKEND_URL = `${environment.apiUrl}/auth`
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -50,14 +50,14 @@ export class AuthService {
 
   login(email:string, password:string){
     const user:AuthData = { email: email, password: password };
-    this.http.post<{token:string, expiresIn:number, userId:string, username:string}>(`${BACKEND_URL}/login`, user)
+    this.http.post<{token:string, expiresIn:number, userId:string, userName:string}>(`${BACKEND_URL}/token`, user)
     .subscribe({
       next: response => {
         this.token = response.token;
         if (this.token){
           this.isAuthenticated = true;
           this.userId = response.userId;
-          this.username = response.username;
+          this.username = response.userName;
 
 
           const expiresInDuration = response.expiresIn;
@@ -67,7 +67,7 @@ export class AuthService {
             now.getTime() + expiresInDuration * 1000
           );
 
-          this.saveAuthData(this.token, expirationDate, response.userId, response.username);
+          this.saveAuthData(this.token, expirationDate, response.userId, response.userName);
           this.authStatusListener.next(true);
 
           this.router.navigate(['/'])

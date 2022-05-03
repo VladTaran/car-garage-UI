@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators }   from '@angular/forms';
 import { CarsService } from '../cars.service';
 import { Car } from '../car.model';
 import { mimeType } from './mime-type.validator';
+import { environment } from 'src/environments/environment';
 
 export enum mode{
   'create',
@@ -18,7 +19,9 @@ export enum mode{
 export class CarCreateComponent implements OnInit{
   private carId: any;
   private mode: mode = mode.create;
+  private carImageId: string = "";
   isLoading: Boolean = false;
+  isImageLoading: Boolean = false;
   car: Car = {} as Car;
   form: FormGroup;
   imagePreview:string = '';
@@ -42,10 +45,12 @@ export class CarCreateComponent implements OnInit{
       return;
     }
     if (this.mode === mode.create){
+      debugger;
+      const imagePath = this.form.value.image;
       this.carsService.addCar(
         this.form.value.model,
         this.form.value.year,
-        this.form.value.image
+        this.carImageId
         );
     } else{
       this.carsService.updateCar(
@@ -71,16 +76,16 @@ export class CarCreateComponent implements OnInit{
               id: data._id,
               model: data.model,
               year: data.year,
-              imagePath: data.imagePath,
+              imageId: data.imageId,
               createdby: data.createdby
             };
 
             this.form.setValue({
               model: this.car.model,
               year: this.car.year,
-              image: this.car.imagePath
+              image: this.car.imageId
             })
-            this.imagePreview = data.imagePath;
+            this.imagePreview = `${environment.bucketUrl}${data.imageId}`;
             this.isLoading = false;
           });
       }else{
@@ -91,6 +96,7 @@ export class CarCreateComponent implements OnInit{
   }
 
   onImagePicked(event:Event){
+    this.isImageLoading = true;
     const htmlFileElement = (event.target as HTMLInputElement);
     if (htmlFileElement && htmlFileElement.files){
       const file = htmlFileElement.files[0];
@@ -101,7 +107,24 @@ export class CarCreateComponent implements OnInit{
       const reader = new FileReader();
       reader.onload = () => {
         this.imagePreview = reader.result as string;
+
+        const form = new FormData();
+        form.append('file', file);
+
+        this.carsService.uploadFileToS3(form)
+          .subscribe({
+            next: (data:any) => {
+              console.log(data.fileId);
+              this.isImageLoading = false;
+              if(data && data.fileId){
+                this.carImageId = data.fileId;
+              }},
+            error: error => {
+              this.isImageLoading = false;
+            }
+          });
       };
+
       reader.readAsDataURL(file);
     }
   }

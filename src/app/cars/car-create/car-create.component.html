@@ -1,6 +1,6 @@
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form [formGroup]="form" (submit)="onCarCreate()" *ngIf="!isLoading">
+  <form [formGroup]="form" (submit)="onCarCreate()">
     <mat-form-field class="car-create-field" appearance="fill">
       <mat-label>Model</mat-label>
       <input
@@ -26,6 +26,7 @@
     <div class="image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image')?.valid">
       <img [src]="imagePreview" [alt]="form.value.model">
     </div>
+    <mat-progress-bar *ngIf="isImageLoading" mode="indeterminate"></mat-progress-bar>
     <mat-error *ngIf="form.get('image')?.invalid">Please pick an image</mat-error>
     <hr/>
     <button

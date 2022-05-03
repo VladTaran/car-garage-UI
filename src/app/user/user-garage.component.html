@@ -7,7 +7,7 @@
     <mat-card class="car-card" *ngFor="let car of cars">
       <div class="car-card-image">
         <span></span>
-        <img [src]="car.imagePath" [alt]="car.model">
+          <img [src]="getImageFileUrl(car.imageId)" [alt]="car.model">
       </div>
       <div class="car-card-caption">
         <span>{{ car.model }}</span>

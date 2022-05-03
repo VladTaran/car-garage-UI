@@ -18,13 +18,13 @@ export class CarsService{
     private router: Router
     ){}
 
-  addCar(model:string, year:string, image:File){
-    const formData = new FormData();
-    formData.append('model', model);
-    formData.append('year', year);
-    formData.append('image', image, model);
+  addCar(model:string, year:string, imageId:string){
+    // const formData = new FormData();
+    // formData.append('model', model);
+    // formData.append('year', year);
+    // formData.append('image', image, model);
 
-    this.http.post<{message:string, car: Car}>(BACKEND_URL, formData)
+    this.http.post<{message:string, car: Car}>(BACKEND_URL, { model: model, year: year, imageId: imageId})
       .subscribe((postData:any) => {
         this.router.navigate(['/']);
       })
@@ -47,7 +47,7 @@ export class CarsService{
         id: id,
         model: model,
         year: year,
-        imagePath: image,
+        imageId: image,
         createdby: null
       }
     }
@@ -59,17 +59,17 @@ export class CarsService{
   }
 
   getCars(pagesize:number, currentpage:number) {
-    const queryParams = `?size=${pagesize}&page=${currentpage}`;
+    const queryParams = `?take=${pagesize}&skip=${currentpage}`;
     this.http
-    .get<{message:string, cars:any, total:number}>(`${BACKEND_URL}${queryParams}`)
+    .get<{message:string, items:any, total:number}>(`${BACKEND_URL}${queryParams}`)
     .pipe(map((carsData) => {
       return {
-        items: carsData.cars.map((item:any) => {
+        items: carsData.items.map((item:any) => {
           return {
               model: item.model,
               year: item.year,
               id: item._id,
-              imagePath: item.imagePath,
+              imageId: item.imageId,
               createdby: item.createdby
             }
         }),
@@ -87,6 +87,10 @@ export class CarsService{
   }
 
   getCarBydId(id:string){
-    return this.http.get<{_id:string, model: string, year:string, imagePath:string, createdby:string}>(`${BACKEND_URL}/${id}`);
+    return this.http.get<{_id:string, model: string, year:string, imageId:string, createdby:string}>(`${BACKEND_URL}/${id}`);
+  }
+
+  uploadFileToS3(formData: FormData){
+    return this.http.post<{url:string}>(`${environment.apiUrl}/file`, formData);
   }
 }

@@ -2,6 +2,6 @@ export interface Car{
   id:string;
   model:string;
   year:string;
-  imagePath:string;
+  imageId:string;
   createdby:string|null;
 }

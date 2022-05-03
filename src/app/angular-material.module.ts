@@ -9,6 +9,7 @@ import {MatPaginatorModule} from '@angular/material/paginator'
 import {MatDialogModule} from '@angular/material/dialog'
 import {MatIconModule} from '@angular/material/icon'
 import {MatListModule} from '@angular/material/list'
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 @NgModule({
   imports: [
@@ -21,7 +22,8 @@ import {MatListModule} from '@angular/material/list'
     MatPaginatorModule,
     MatDialogModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatProgressBarModule
   ],
   exports:[
     MatInputModule,
@@ -33,7 +35,8 @@ import {MatListModule} from '@angular/material/list'
     MatPaginatorModule,
     MatDialogModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatProgressBarModule
   ]
 })
 export class AngularMaterialModule{

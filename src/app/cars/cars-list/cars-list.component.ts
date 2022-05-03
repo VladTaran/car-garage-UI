@@ -4,6 +4,7 @@ import { Car } from '../car.model';
 import { CarsService } from '../cars.service';
 import { Subscription } from 'rxjs';
 import { AuthService } from 'src/app/auth/auth.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-cars-list',
@@ -58,10 +59,14 @@ export class CarsListComponent implements OnInit, OnDestroy{
   }
 
   loadCars(){
-    this.carsService.getCars(this.pageSize, this.page);
+    this.carsService.getCars(this.pageSize, this.page - 1);
   }
 
   filterCarByUserId(items:Car[]){
-    return items.filter(x => x.createdby === this.userId);
+    return items; //.filter(x => x.createdby === this.userId);
+  }
+
+  GetImageFileUrl(fileId:string){
+    return `${environment.bucketUrl}${fileId}`;
   }
 };

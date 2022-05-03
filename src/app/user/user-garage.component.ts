@@ -4,6 +4,7 @@ import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { UsersService } from './users.service';
 import { Car } from '../cars/car.model';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'user-garage',
@@ -36,6 +37,10 @@ export class UserGarageComponent implements OnInit, OnDestroy {
           });
       }
     });
+  }
+
+  getImageFileUrl(fileId:string){
+    return `${environment.bucketUrl}${fileId}`;
   }
 
   onLogout(){
