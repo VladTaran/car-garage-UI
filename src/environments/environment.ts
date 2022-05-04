@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl:'https://localhost:5001/api',
+  apiUrl:'https://mygarage.azurewebsites.net/api',
   bucketUrl: 'https://car-garage-image-dev.s3.amazonaws.com/'
 };
 
