@@ -14,7 +14,7 @@ import { AngularMaterialModule } from './angular-material.module';
 import { CarsModule } from './cars/cars.module';
 import { UsersModule } from './user/users.module';
 import { PageModule } from './page/page.module';
-import { PageHeaderComponent } from './page/header/page-header.component';
+import { PageHeaderComponent } from './page/page-header/page-header.component';
 import { NavBarComponent } from './page/navigation/nav-bar.component';
 
 

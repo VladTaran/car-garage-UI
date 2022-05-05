@@ -9,6 +9,8 @@ import { AuthService } from "../../auth/auth.service";
 })
 export class NavBarComponent implements OnInit, OnDestroy{
   private authStatusSub?:Subscription;
+  isUserAuthenticated: Boolean = false;
+
   navList:any[] = [
     { title: "Title 1", onClick: this.onItemCLick },
     { title: "Title 2", onClick: this.onItemCLick}
@@ -17,6 +19,7 @@ export class NavBarComponent implements OnInit, OnDestroy{
   constructor(private authService:AuthService){}
 
   ngOnInit() {
+    this.isUserAuthenticated = this.authService.getIsAuth();
   }
 
   ngOnDestroy() {
