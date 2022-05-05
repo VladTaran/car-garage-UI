@@ -48,6 +48,8 @@ export class AuthService {
       });
   }
 
+  testMethod(){}
+
   login(email:string, password:string){
     const user:AuthData = { email: email, password: password };
     this.http.post<{token:string, expiresIn:number, userId:string, userName:string}>(`${BACKEND_URL}/token`, user)
