@@ -1,0 +1,26 @@
+.car-create-field {
+  display: block;
+  width: 40%;
+}
+
+mat-spinner{
+  margin: 0 auto;
+  position: absolute;
+  min-width: 500px;
+  min-height: 500px;
+}
+
+input[type="file"]{
+  visibility: hidden;
+}
+
+.image-preview{
+  height: 10rem;
+  margin: 1rem 0;
+}
+
+.image-preview img{
+  height: 100%;
+
+
+}

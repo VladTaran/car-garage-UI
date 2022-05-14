@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <span class="home" (click)="onHomeClick()">My Garage</span>
+  <a *ngIf="isUserAuthenticated" class="user-icon" (click)="onAccountLinkClick()">
+    <div class="user-icon-container">
+      <mat-icon>account_circle</mat-icon>
+    </div>
+  </a>
+  <span class="spacer"></span>
+  <ul>
+    <li *ngIf="isUserAuthenticated">
+      <a mat-button [routerLink]="[{ outlets: { primary: ['create'] } }]" routerLinkActive="mat-accent">Create Car</a>
+    </li>
+    <li *ngIf="!isUserAuthenticated">
+      <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">
+        <mat-icon>power_settings_new</mat-icon>
+        Login</a>
+    </li>
+    <li *ngIf="!isUserAuthenticated">
+      <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a>
+    </li>
+    <li *ngIf="isUserAuthenticated">
+      <button class="logout-btn" mat-button (click)="onLogout()">Logout</button>
+    </li>
+  </ul>
+</mat-toolbar>

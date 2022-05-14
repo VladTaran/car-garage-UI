@@ -1,0 +1,18 @@
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<mat-accordion multi="true" *ngIf="cars.length > 0 && !isLoading">
+  <mat-expansion-panel *ngFor="let car of filterCarByUserId(cars)">
+    <mat-expansion-panel-header>
+      {{ car.model }}
+    </mat-expansion-panel-header>
+    <div class="car-image">
+      <img [src]="GetImageFileUrl(car.imageId)" [alt]="car.model">
+    </div>
+    <p>{{ car.year }}</p>
+    <mat-action-row *ngIf="isUserAuthenticated && userId === car.createdby">
+      <a mat-button [routerLink]="['/edit',car.id]">EDIT</a>
+      <button mat-button color="warn" (click)="onDelete(car.id)">DELETE</button>
+    </mat-action-row>
+  </mat-expansion-panel>
+</mat-accordion>
+<mat-paginator [length]="total" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="onPageChanged($event)"></mat-paginator>
+<p class="mat-body-1" *ngIf="cars.length == 0 && !isLoading">No cars added yet</p>

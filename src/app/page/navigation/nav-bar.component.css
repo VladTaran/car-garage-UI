@@ -1,0 +1,21 @@
+.c-nav{
+  word-wrap: break-word;
+  flex: none;
+  margin: -4px 0 0 -46px;
+  position: relative;
+  overflow: hidden;
+  font-size: 15px;
+  line-height: 22px;
+}
+
+.c-nav-container{
+  overflow-x: hidden;
+  overflow-y: scroll;
+  max-height: calc(100vh - 50px);
+  margin-right: -50px;
+  padding: 20px 0 30px;
+}
+
+.c-nav-shaft{
+  width: 237px;
+}
