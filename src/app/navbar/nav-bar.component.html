@@ -1,0 +1,114 @@
+<div class="c-nav ctx-branded-dark is-at-top" data-role="nav">
+  <div class="c-nav-container" data-slot="nav.container">
+    <div class="c-nav-shaft">
+      <nav class="c-nav-block is-active" data-slot="nav.section ">
+        <div class="c-nav-list" style="" data-slot="nav.list">
+          <a class="c-nav-block__item u-bold c-nav-block__item--caption c-nav-block__item--icon" href="/"
+            data-ym-target="menu_feed" data-role="feed-status" data-kind="side">
+            <div class="c-nav-block-icon c-nav-block-icon--feed"></div>
+            News
+            <span class="c-notification-bubble fx-bouncein">1</span>
+          </a>
+          <a class="c-nav-block__item u-bold c-nav-block__item--caption c-nav-block__item--icon" href="/cars/">
+            <div class="c-nav-block-icon c-nav-block-icon--cars"></div>
+            Cars
+          </a>
+          <a class="c-nav-block__item u-bold c-nav-block__item--caption c-nav-block__item--icon" href="/experience/">
+            <div class="c-nav-block-icon c-nav-block-icon--experience"></div>
+            Logbooks
+          </a>
+          <a class="c-nav-block__item u-bold c-nav-block__item--caption c-nav-block__item--icon" href="/communities/">
+            <div class="c-nav-block-icon c-nav-block-icon--communities"></div>
+            Forum
+          </a>
+          <a class="c-nav-block__item u-bold c-nav-block__item--caption c-nav-block__item--icon" href="/companies">
+            <div class="c-nav-block-icon c-nav-block-icon--companies"></div>
+            Services
+          </a>
+          <a class="c-nav-block__item u-bold c-nav-block__item--caption c-nav-block__item--icon" href="/market">
+            <div class="c-nav-block-icon c-nav-block-icon--market"></div>
+            Trade <span class="c-notification-bubble">87</span>
+          </a>
+          <a class="c-nav-block__item u-bold c-nav-block__item--caption c-nav-block__item--icon" href="/election"
+            data-ym-target="menu_election">
+            <div class="c-nav-block-icon c-nav-block-icon--election"></div>
+            Car of the day <span class="c-notification-bubble c-notification-bubble--dot">&nbsp;</span>
+          </a>
+        </div>
+      </nav>
+      <nav class="c-nav-block is-active" data-slot="nav.section ">
+        <h3 class="c-nav-block__header" data-slot="nav.header" data-role="collapsible" data-duration="200"
+          data-target="[data-id=section-3]">
+          My
+          <mat-icon class="c-nav-block__indicator" name="angle-arrow-down"><svg>
+              <use xlink:href="/assets/images/map.BKIa7rHrq1-DKB6jVR-0f1pJQw8.svg#angle-arrow-down"></use>
+            </svg></mat-icon>
+
+        </h3>
+        <div class="c-nav-list" data-id="section-3" style="" data-slot="nav.list">
+          <a class="c-nav-block__item c-nav-block__item--truncated c-nav-block__item--icon"
+            href="/r/subaru/forester/501556248857019248/" data-ym-target="menu_my_car">
+            <img class="c-nav-block-icon c-nav-block-icon--user-car" src="https://a.d-cd.net/uAAAAgLrqeA-120.jpg">
+            Subaru Forester 2.5 Американец
+          </a>
+          <a class="c-nav-block__item c-nav-block__item--icon" href="/my/r/" data-ym-target="menu_my_allcars">
+            <div class="c-nav-block-icon c-nav-block-icon--profile-cars"></div>
+            My Cars
+          </a>
+          <a class="c-nav-block__item c-nav-block__item--icon" href="/users/vynd/#blog" data-ym-target="menu_my_blog">
+            <div class="c-nav-block-icon c-nav-block-icon--blog"></div>
+            Private blog
+          </a>
+          <a class="c-nav-block__item c-nav-block__item--icon" href="/s/s/AAAAAAAr_1I" data-ym-target="menu_my_albums">
+            <div class="c-nav-block-icon c-nav-block-icon--snaps"></div>
+            Albums
+          </a>
+          <a class="c-nav-block__item c-nav-block__item--icon" href="/my/guests" data-ym-target="menu_my_guests">
+            <div class="c-nav-block-icon c-nav-block-icon--guests"></div>
+            Guests
+          </a>
+          <a class="c-nav-block__item c-nav-block__item--icon" href="/my/bookmarks/" data-ym-target="menu_my_bookmarks">
+            <div class="c-nav-block-icon c-nav-block-icon--bookmark"></div>
+            Bookmarks
+          </a>
+        </div>
+      </nav>
+      <nav class="c-nav-block " data-slot="nav.section ">
+        <h3 class="c-nav-block__header" data-slot="nav.header" data-role="collapsible" data-duration="200"
+          data-target="[data-id=section-7]">
+          Support
+          <mat-icon class="c-nav-block__indicator" name="angle-arrow-down"><svg>
+              <use xlink:href="/assets/images/map.BKIa7rHrq1-DKB6jVR-0f1pJQw8.svg#angle-arrow-down"></use>
+            </svg></mat-icon>
+        </h3>
+        <div class="c-nav-list" data-id="section-7" style="display: none;" data-slot="nav.list">
+          <a class="c-nav-block__item" href="/help/" data-ym-target="menu_support_help">
+            Help
+          </a>
+          <a class="c-nav-block__item" href="/rules/" data-ym-target="menu_support_rules">
+            Site rules
+          </a>
+          <a class="c-nav-block__item" href="/help/support?topic=none"
+            onclick="if (window.zE) {zE.activate(); return false;}" data-ym-target="menu_support_ask">
+            Ask to support
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
+</div>
+<div *ngIf="isUserAuthenticated" class="c-nav">
+  <div class="c-nav-container">
+    <div class="c-nav-shaft">
+      <mat-action-list>
+        <mat-list-item *ngFor="let item of navList">
+          <h3 matLine> {{item.title}} </h3>
+          <p matLine>
+            <span> {{item.title}} </span>
+            <span class="demo-2"> -- {{item.title}} </span>
+          </p>
+        </mat-list-item>
+      </mat-action-list>
+    </div>
+  </div>
+</div>

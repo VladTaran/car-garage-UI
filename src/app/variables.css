@@ -1,0 +1,170 @@
+:root:not(.dark) .ctx-reset,
+:root,
+body {
+ --theme-page: #fff;
+ --theme-page-modal: #111;
+ --theme-primary-card: #fff;
+ --theme-secondary-card: #fff;
+ --theme-tappable: rgba(0, 0, 0, .07);
+ --theme-tappable-solid: #fff;
+ --theme-hover: rgba(0, 0, 0, .1);
+ --theme-inverted: rgba(255, 255, 255, .95);
+ --theme-normal: #333;
+ --theme-secondary: #999;
+ --theme-secondary-icon: #bbb;
+ --theme-disabled: #ccc;
+ --theme-symbols-hover: #000;
+ --theme-focus: #333;
+ --theme-call: #47c;
+ --theme-error: #b33;
+ --theme-success: #593;
+ --theme-admin: #fff5dd;
+ --theme-brand: #c03;
+ --theme-money: #593;
+ --theme-shadow: 0 0 0 1px rgba(0, 0, 0, .035), 0 4px 25px rgba(0, 0, 0, .07);
+ --theme-shadow-secondary: 0 0 0 1px rgba(0, 0, 0, .035), 0 2px 10px rgba(0, 0, 0, .07);
+ --theme-shadow-inset: 0 0 0 1px rgba(0, 0, 0, .035), inset 0 2px 5px rgba(0, 0, 0, .07);
+ --theme-shadow-popup: 0 0 0 1px rgba(0, 0, 0, .035), 0 10px 50px rgba(0, 0, 0, .33);
+ --theme-username-00: #333;
+ --theme-username-01: #666;
+ --theme-username-02: #2584a8;
+ --theme-username-03: #088aee;
+ --theme-username-04: #d561d4;
+ --theme-username-05: #9a1e71;
+ --theme-username-06: #cc0020;
+ --theme-username-07: #900;
+ --theme-username-08: #f60;
+ --theme-username-09: #17800b;
+ --theme-username-10: #489e0e;
+ --theme-username-11: #634209;
+ --theme-apple: #fff;
+ --theme-apple-bg: #000;
+ --theme-toggle: #fff;
+ --theme-toggle-off: #ccc;
+ --theme-toggle-on: #333;
+ --theme-search-focus: #3870c6;
+ --theme-search-bg: #f5f5f5;
+ --theme-search-focus-bg: #fff;
+ --theme-link-gray: #808080;
+ --theme-bg-footer: #f8f8f8;
+ --theme-footer: #808080;
+ --theme-filter-opacity-normal: .094;
+ --theme-filter-opacity-hover: .13;
+ --theme-filter-normal: invert(1) brightness(.2);
+ --theme-filter-secondary-icon: invert(1) brightness(.73);
+ --theme-filter-nav: invert(1) brightness(.5);
+ --theme-filter-symbols-hover: none;
+ --theme-arrow-down: var(--res-arrow-down)
+}
+:root:not(.dark) .ctx-reset,
+.c-top-search:focus-within,
+.c-top-search__input:focus,
+:root,
+body {
+ --theme-page: #fff;
+ --theme-page-modal: #111;
+ --theme-primary-card: #fff;
+ --theme-secondary-card: #fff;
+ --theme-tappable: rgba(0, 0, 0, .07);
+ --theme-tappable-solid: #fff;
+ --theme-hover: rgba(0, 0, 0, .1);
+ --theme-inverted: rgba(255, 255, 255, .95);
+ --theme-normal: #333;
+ --theme-secondary: #999;
+ --theme-secondary-icon: #bbb;
+ --theme-disabled: #ccc;
+ --theme-symbols-hover: #000;
+ --theme-focus: #333;
+ --theme-call: #47c;
+ --theme-error: #b33;
+ --theme-success: #593;
+ --theme-admin: #fff5dd;
+ --theme-brand: #c03;
+ --theme-money: #593;
+ --theme-shadow: 0 0 0 1px rgba(0, 0, 0, .035), 0 4px 25px rgba(0, 0, 0, .07);
+ --theme-shadow-secondary: 0 0 0 1px rgba(0, 0, 0, .035), 0 2px 10px rgba(0, 0, 0, .07);
+ --theme-shadow-inset: 0 0 0 1px rgba(0, 0, 0, .035), inset 0 2px 5px rgba(0, 0, 0, .07);
+ --theme-shadow-popup: 0 0 0 1px rgba(0, 0, 0, .035), 0 10px 50px rgba(0, 0, 0, .33);
+ --theme-username-00: #333;
+ --theme-username-01: #666;
+ --theme-username-02: #2584a8;
+ --theme-username-03: #088aee;
+ --theme-username-04: #d561d4;
+ --theme-username-05: #9a1e71;
+ --theme-username-06: #cc0020;
+ --theme-username-07: #900;
+ --theme-username-08: #f60;
+ --theme-username-09: #17800b;
+ --theme-username-10: #489e0e;
+ --theme-username-11: #634209;
+ --theme-apple: #fff;
+ --theme-apple-bg: #000;
+ --theme-toggle: #fff;
+ --theme-toggle-off: #ccc;
+ --theme-toggle-on: #333;
+ --theme-search-focus: #3870c6;
+ --theme-search-bg: #f5f5f5;
+ --theme-search-focus-bg: #fff;
+ --theme-link-gray: #808080;
+ --theme-bg-footer: #f8f8f8;
+ --theme-footer: #808080;
+ --theme-filter-opacity-normal: .094;
+ --theme-filter-opacity-hover: .13;
+ --theme-filter-normal: invert(1) brightness(.2);
+ --theme-filter-secondary-icon: invert(1) brightness(.73);
+ --theme-filter-nav: invert(1) brightness(.5);
+ --theme-filter-symbols-hover: none;
+ --theme-arrow-down: var(--res-arrow-down)
+}
+:root.ctx-dark,
+html.d .g-branded .ctx-branded-dark,
+html.d .g-branded .x-from:not(.x-box) .x-form__submit,
+.c-radiogroup__item.is-active .c-radiogroup__button,
+.c-radiogroup input:checked+.c-radiogroup__button,
+.ctx-dark {
+ --theme-page: #171717;
+ --theme-primary-card: #222;
+ --theme-secondary-card: #333;
+ --theme-tappable: rgba(255, 255, 255, .15);
+ --theme-hover: rgba(255, 255, 255, .2);
+ --theme-normal: rgba(255, 255, 255, .95);
+ --theme-secondary: rgba(255, 255, 255, .5);
+ --theme-secondary-icon: rgba(255, 255, 255, .5);
+ --theme-disabled: rgba(255, 255, 255, .2);
+ --theme-symbols-hover: #fff;
+ --theme-focus: rgba(255, 255, 255, .95);
+ --theme-shadow: none;
+ --theme-shadow-popup: none;
+ --theme-shadow-inset: none;
+ --theme-username-00: #ccc;
+ --theme-username-01: #999;
+ --theme-username-02: #36a3c7;
+ --theme-username-03: #39f;
+ --theme-username-04: #d561d4;
+ --theme-username-05: #b22282;
+ --theme-username-06: #f03;
+ --theme-username-07: #c03;
+ --theme-username-08: #f90;
+ --theme-username-09: #35b227;
+ --theme-username-10: #6dda00;
+ --theme-username-11: #963;
+ --theme-apple: #000;
+ --theme-apple-bg: #fff;
+ --theme-toggle-off: #666;
+ --theme-toggle-on: #999;
+ --theme-search-focus: var(--theme-normal);
+ --theme-search-bg: rgba(255, 255, 255, .125);
+ --theme-search-focus-bg: var(--theme-search-bg);
+ --theme-link-gray: rgba(255, 255, 255, .4);
+ --theme-bg-footer: rgba(0, 0, 0, .5);
+ --theme-footer: #fff;
+ --theme-filter-opacity-normal: .158;
+ --theme-filter-opacity-hover: .215;
+ --theme-filter-normal: invert(1) opacity(.95);
+ --theme-filter-secondary-icon: invert(1) opacity(.5);
+ --theme-filter-nav: invert(1) opacity(.5);
+ --theme-filter-symbols-hover: invert(1);
+ --theme-arrow-down: var(--res-arrow-down-dark);
+ color-scheme:dark;
+ caret-color:currentColor
+}

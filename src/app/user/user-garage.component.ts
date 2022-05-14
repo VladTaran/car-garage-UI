@@ -1,8 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router, ParamMap, ActivatedRoute } from '@angular/router';
+import { ParamMap, ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
 import { UsersService } from './users.service';
+import { NavigationService } from '../navigation.service';
 import { Car } from '../cars/car.model';
 import { environment } from 'src/environments/environment';
 
@@ -20,9 +21,9 @@ export class UserGarageComponent implements OnInit, OnDestroy {
 
   constructor(
     private authService: AuthService,
-    private router: Router,
     public route: ActivatedRoute,
-    private usersService: UsersService
+    private usersService: UsersService,
+    private navigationService: NavigationService
     ){}
 
   ngOnInit(){
@@ -30,11 +31,13 @@ export class UserGarageComponent implements OnInit, OnDestroy {
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('userId')){
         this.userId = paramMap.get('userId') as string;
-        this.usersService.getUserBydId(this.userId)
-          .subscribe(user => {
-            this.cars = user.cars;
-            this.isLoading = false;
-          });
+        this.usersService.getUserById(this.userId)
+          .subscribe({
+            next: response => {
+              this.cars = response.cars;
+              this.navigationService.changeTitle(`Profile ${response.userData.nickname}`);
+              this.isLoading = false;
+          }});
       }
     });
   }

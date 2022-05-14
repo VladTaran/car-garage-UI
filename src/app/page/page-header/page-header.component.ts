@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy, Input } from "@angular/core";
 import { Subscription } from "rxjs";
-import { AuthService } from "../../auth/auth.service";
+import { NavigationService } from "../../navigation.service";
 import { ActivatedRoute } from "@angular/router";
 
 @Component({
@@ -9,18 +9,23 @@ import { ActivatedRoute } from "@angular/router";
   styleUrls: ['./page-header.component.css']
 })
 export class PageHeaderComponent implements OnInit, OnDestroy{
-  private authStatusSub?:Subscription;
-  header:string = 'Please, introduce yourself';
+  private titleSub?:Subscription;
 
-  constructor(private authService:AuthService, public route: ActivatedRoute){}
+  constructor(private navigationService:NavigationService, public route: ActivatedRoute){}
 
-  @Input() title: string = '';
+  title: string = 'Default Title';
 
   ngOnInit() {
+    this.titleSub = this.navigationService.currentTitle
+      .subscribe({
+        next: title => {
+          this.title = title;
+        }
+      })
   }
 
   ngOnDestroy() {
-    this.authStatusSub?.unsubscribe();
+    this.titleSub?.unsubscribe();
   }
 
 }

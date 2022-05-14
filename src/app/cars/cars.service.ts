@@ -3,8 +3,8 @@ import { HttpClient } from "@angular/common/http";
 import { Car } from "./car.model";
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router } from "@angular/router";
 import { environment } from '../../environments/environment';
+import { NavigationService } from "../navigation.service";
 
 const BACKEND_URL = `${environment.apiUrl}/cars`;
 
@@ -15,18 +15,13 @@ export class CarsService{
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private navigation: NavigationService
     ){}
 
   addCar(model:string, year:string, imageId:string){
-    // const formData = new FormData();
-    // formData.append('model', model);
-    // formData.append('year', year);
-    // formData.append('image', image, model);
-
     this.http.post<{message:string, car: Car}>(BACKEND_URL, { model: model, year: year, imageId: imageId})
       .subscribe((postData:any) => {
-        this.router.navigate(['/']);
+        this.navigation.base();
       })
   }
 
@@ -54,7 +49,7 @@ export class CarsService{
 
     this.http.put<{message:string, car: Car}>(`${BACKEND_URL}/${id}`, carData)
       .subscribe(() => {
-        this.router.navigate(['/']);
+        this.navigation.base();
       });
   }
 

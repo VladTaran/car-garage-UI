@@ -1,39 +1,68 @@
-  <mat-card>
-    <mat-spinner *ngIf="isLoading"></mat-spinner>
-    <form *ngIf="!isLoading" #loginForm="ngForm" (submit)="onLogin(loginForm)">
-      <h2>Log In</h2>
-      <mat-error *ngIf="!loginValid">
-        The username and password were not recognized
-      </mat-error>
-      <mat-form-field class="car-create-field" appearance="fill">
-        <mat-label>Email</mat-label>
+  <div class="c-block c-block--content">
+    <div class="o-group o-group--m o-group--v"></div>
+    <div class="hr"><hr /></div>
+    <form #loginForm="ngForm" (submit)="onLogin(loginForm)">
+      <input type="hidden" value="" />
+      <div class="f-legend">
+        <label>Email</label>
+      </div>
+      <div class="f-field">
         <input
-          matInput
-          placeholder="Enter email"
+          class="c-input f-item"
           type="email"
           name="email"
+          id="login"
+          maxlength="64"
+          autofocus
+          autocomplete="username"
+          matInput
+          placeholder="Enter email"
           ngModel
           #emailInput="ngModel"
           email
           required
           >
-          <mat-error *ngIf="emailInput.invalid">Please enter email</mat-error>
-      </mat-form-field>
-      <mat-form-field class="car-create-field" appearance="fill">
-        <mat-label>Password</mat-label>
+          <br>
+      </div>
+      <div class="f-legend">
+        <label for="password">Password</label>
+      </div>
+      <div class="f-field">
         <input
+          class="c-input f-item"
           type="password"
+          name="password"
+          id="password"
+          maxlength="64"
+          autocomplete="current-password"
           matInput
           placeholder="Enter password"
-          name="password"
           ngModel
           #passwordInput="ngModel"
-          required
           password
+          required
           >
-          <mat-error *ngIf="passwordInput.invalid">Please a valid password</mat-error>
-      </mat-form-field>
-      <hr/>
-      <button mat-raised-button color="primary" [disabled]="!loginForm.form.valid" type="submit">Login</button>
+        <div class="f-item f-item--block">
+          <a class="c-button" href="/auth/recovery">I forgot my password</a>
+        </div>
+      </div>
+      <div class="f-field">
+        <div class="c-checkbox-group f-item">
+          <label class="c-checkbox">
+            <input type="checkbox" name="rememberMe" id="rememberMe" value="true"   checked >
+            <span class="c-checkbox__check"></span><span class="c-checkbox__label">Remember me</span>
+          </label>
+        </div>
+      </div>
+      <div class="f-field">
+        <div class="f-group">
+          <div class="f-group__item">
+            <button type="submit" class="c-button c-button--primary c-button--l u-mobile-100">Log In</button>
+          </div>
+          <div class="f-group__item">
+            <a class="c-button c-button--l u-mobile-100" href="/auth/signup">Sign Up</a>
+          </div>
+        </div>
+      </div>
     </form>
-  </mat-card>
+  </div>

@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { AuthData } from "./auth.data.model";
-import { Subject } from "rxjs";
-import { Router } from "@angular/router";
+import { Subject, Subscription } from "rxjs";
 import { environment } from '../../environments/environment';
+import { NavigationService } from "../navigation.service";
 
 const BACKEND_URL = `${environment.apiUrl}/auth`
 
@@ -17,7 +17,7 @@ export class AuthService {
   private username: string | null = null;
   private tokenTimer: any;
 
-  constructor(private http:HttpClient, private router: Router){}
+  constructor(private http:HttpClient, private navigation: NavigationService){}
 
   autoAuthUser(){
     const authInformation = this.getAuthData();
@@ -36,19 +36,17 @@ export class AuthService {
     }
   }
 
-  createUser(email:string, password:string, username:string){
-    this.http.post<{message:string, userId:string}>(
+  createUser(email:string, password:string, username:string): Subscription{
+    return this.http.post<{message:string, userId:string}>(
       `${BACKEND_URL}/signup`,
-      { email: email, password: password, username: username })
+      { email: email, password: password, nickname: username })
       .subscribe({
         complete: () => {
-          this.router.navigate(['/auth/login']);
+          this.navigation.login();
         },
-        error: error => { this.authStatusListener.next(false); }
+        error: () => { this.authStatusListener.next(false); }
       });
   }
-
-  testMethod(){}
 
   login(email:string, password:string){
     const user:AuthData = { email: email, password: password };
@@ -72,7 +70,7 @@ export class AuthService {
           this.saveAuthData(this.token, expirationDate, response.userId, response.userName);
           this.authStatusListener.next(true);
 
-          this.router.navigate(['/'])
+          this.navigation.userPage(response.userId);
         }
       },
       error: error => {
@@ -88,7 +86,7 @@ export class AuthService {
     this.userId = null;
     this.clearAuthData();
     clearTimeout(this.tokenTimer);
-    this.router.navigate(['/auth/login']);
+    this.navigation.login();
   }
 
   getToken(){
@@ -104,8 +102,8 @@ export class AuthService {
     return this.isAuthenticated;
   }
 
-  getUserId(){
-    return this.userId;
+  getUserId():string{
+    return this.userId as string;
   }
 
   getUserName(){

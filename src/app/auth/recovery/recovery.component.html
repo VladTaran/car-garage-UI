@@ -1,0 +1,38 @@
+<div class="c-block c-block--content">
+  <div class="o-group o-group--m o-group--v"></div>
+  <p>
+    On this page, you can set a new password using the email address provided in your profile. We cannot guess the old password because it is stored on the server in encrypted form.
+  </p>
+  <div class="hr"><hr /></div>
+  <form #loginForm="ngForm" (submit)="onRecovery(loginForm)">
+    <input type="hidden" value="" />
+    <div class="f-legend">
+      <label for="login">Email</label>
+    </div>
+    <div class="f-field">
+      <input
+        class="c-input f-item"
+        type="email"
+        name="email"
+        id="login"
+        maxlength="64"
+        autofocus
+        autocomplete="login"
+        matInput
+        placeholder="Enter email"
+        ngModel
+        #emailInput="ngModel"
+        email
+        required
+        >
+        <br>
+    </div>
+    <div class="f-field">
+      <div class="f-group">
+        <div class="f-group__item">
+          <button type="submit" class="c-button c-button--primary c-button--l u-mobile-100">Recover</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

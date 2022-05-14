@@ -1,0 +1,18 @@
+<div class="l-container">
+  <div class="l-nav">
+    <router-outlet name="navbar"></router-outlet>
+  </div>
+  <div class="l-page js-page">
+    <div class="l-page-header">
+      <router-outlet name="title"></router-outlet>
+    </div>
+    <div class="l-page-columns">
+      <div class="l-page-main g-column-mid">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="l-page-side">
+        <router-outlet name="sidebar"></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

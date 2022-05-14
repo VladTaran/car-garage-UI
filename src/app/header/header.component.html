@@ -1,25 +1,26 @@
-<mat-toolbar>
-  <span class="home" (click)="onHomeClick()">My Garage</span>
-  <a *ngIf="isUserAuthenticated" class="user-icon" (click)="onAccountLinkClick()">
-    <div class="user-icon-container">
-      <mat-icon>account_circle</mat-icon>
+<header class="l-header" data-role="sticky">
+  <div class="ctx-dark c-top">
+    <div class="c-top__container">
+      <a class="c-logo c-logo--en" rel="home" href="/">
+          <span></span>
+      </a>
+      <a *ngIf="isUserAuthenticated" class="c-top__userpic" [routerLink]="userProfile">
+        <div class="o-img is-round" style="background-color: #767d7b;" data-size="60,60">
+          <span style="display: block; padding-top: 100%"></span>
+          <img src="" loading="lazy" width="60" height="60">
+        </div>
+      </a>
+      <div class="c-top__search">
+        <form class="c-search c-top-search">
+            <input class="c-input no-transition c-search__input c-top-search__input" type="search" name="text" placeholder="Search" maxlength="128" value="" data-role="topsearch"  >
+            <button class="c-button c-button--primary c-top-search__button" type="submit">Find</button>
+        </form>
+      </div>
+      <div class="o-group">
+        <a *ngIf="!isUserAuthenticated" class="c-button" href="/auth/login">Log In</a>
+        <!-- <a *ngIf="!isUserAuthenticated" class="c-button" href="/auth/signup">Sign Up</a> -->
+        <a *ngIf="isUserAuthenticated" class="c-button" mat-button (click)="onLogout()">Log Out</a>
     </div>
-  </a>
-  <span class="spacer"></span>
-  <ul>
-    <li *ngIf="isUserAuthenticated">
-      <a mat-button [routerLink]="[{ outlets: { primary: ['create'] } }]" routerLinkActive="mat-accent">Create Car</a>
-    </li>
-    <li *ngIf="!isUserAuthenticated">
-      <a mat-button routerLink="/auth/login" routerLinkActive="mat-accent">
-        <mat-icon>power_settings_new</mat-icon>
-        Login</a>
-    </li>
-    <li *ngIf="!isUserAuthenticated">
-      <a mat-button routerLink="/auth/signup" routerLinkActive="mat-accent">Signup</a>
-    </li>
-    <li *ngIf="isUserAuthenticated">
-      <button class="logout-btn" mat-button (click)="onLogout()">Logout</button>
-    </li>
-  </ul>
-</mat-toolbar>
+    </div>
+  </div>
+</header>

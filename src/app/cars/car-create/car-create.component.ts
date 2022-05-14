@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { FormControl, FormGroup, Validators }   from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CarsService } from '../cars.service';
 import { Car } from '../car.model';
 import { mimeType } from './mime-type.validator';
@@ -45,7 +45,6 @@ export class CarCreateComponent implements OnInit{
       return;
     }
     if (this.mode === mode.create){
-      debugger;
       const imagePath = this.form.value.image;
       this.carsService.addCar(
         this.form.value.model,

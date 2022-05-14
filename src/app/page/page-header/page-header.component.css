@@ -1,9 +1,35 @@
-.m-title{
-  margin: 0;
-  font-size: 30px;
-  line-height: 36px;
-  letter-spacing: -.02em;
-  font-weight: 700;
-  font-family: sans-serif, color-emoji, system-ui;
-  word-wrap: break-word;
-}
+@import '../../variables';
+
+.x-title-header {
+  word-wrap:break-word;
+  margin-bottom:20px
+ }
+ .x-title-header *+* {
+  margin-top:5px
+ }
+ .x-title-header--cup {
+  margin-right:50px
+ }
+ .g-branded .x-title-header:not(.x-title-header--not-floating) * {
+  color:#fff
+ }
+ .g-branded .x-title-header:not(.x-title-header--not-floating) .c-counter {
+  color:#999!important
+ }
+ .x-title-header__to-top {
+  font-weight:700;
+  font-size:18px;
+  line-height:26px;
+  margin-top:4px
+ }
+ .x-title-header__to-top+* {
+  margin-top:3px
+ }
+ .x-title {
+  margin:0;
+  font-size:30px;
+  line-height:36px;
+  letter-spacing:-.02em;
+  font-weight:700;
+  word-wrap:break-word
+ }

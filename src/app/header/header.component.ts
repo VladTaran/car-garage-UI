@@ -1,24 +1,30 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AuthService } from '../auth/auth.service';
+import { NavigationService } from '../navigation.service';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  styleUrls: ['../variables.css', '../main.css', './header.component.css']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
   isUserAuthenticated:Boolean = false;
   private authListenerSubs: Subscription = new Subscription();
+  userProfile = '';
 
   constructor(
     private authService: AuthService,
-    private router: Router,
+    private navigation: NavigationService,
     ){}
 
   ngOnInit(){
     this.isUserAuthenticated = this.authService.getIsAuth();
+    if (this.isUserAuthenticated){
+      const userId = this.authService.getUserId();
+      this.userProfile = `users/${userId}`;
+    }
+
     this.authListenerSubs = this.authService
       .getAuthStatusListener()
       .subscribe(isAuthenticated => {
@@ -34,14 +40,14 @@ export class HeaderComponent implements OnInit, OnDestroy {
     if (!this.isUserAuthenticated){
       return;
     }
-    this.router.navigate(['/']);
+    this.navigation.base();
   }
 
   onAccountLinkClick(){
     if (!this.isUserAuthenticated){
       return;
     }
-    this.router.navigate([`/users/${this.authService.getUserId()}`]);
+    this.navigation.userPage(`${this.authService.getUserId()}`);
   }
 
   ngOnDestroy(){

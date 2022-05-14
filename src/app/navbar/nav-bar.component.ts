@@ -1,11 +1,11 @@
 import { Component, OnInit, OnDestroy } from "@angular/core";
 import { Subscription } from "rxjs";
-import { AuthService } from "../../auth/auth.service";
+import { AuthService } from "../auth/auth.service";
 
 @Component({
   selector: 'nav-bar',
   templateUrl: './nav-bar.component.html',
-  styleUrls: ['./nav-bar.component.css']
+  styleUrls: ['../variables.css', '../main.css']
 })
 export class NavBarComponent implements OnInit, OnDestroy{
   private authStatusSub?:Subscription;

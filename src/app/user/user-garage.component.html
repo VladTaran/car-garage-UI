@@ -1,20 +1,33 @@
-<mat-spinner *ngIf="isLoading"></mat-spinner>
 <mat-accordion multi="true" *ngIf="cars.length > 0 && !isLoading">
   <mat-expansion-panel [expanded]="true">
     <mat-expansion-panel-header>
-      <h1>Cars</h1>
+      <div class="c-details__summary">
+        <h3 class="c-header">Car</h3>
+      </div>
     </mat-expansion-panel-header>
-    <mat-card class="car-card" *ngFor="let car of cars">
-      <div class="car-card-image">
-        <span></span>
+    <div class="c-car-card-sa c-darkening-hover-container c-car-card-sa--2nd c-car-card-sa--xxl" *ngFor="let car of cars">
+      <a class="u-link-area" href="/r/subaru/forester/501556248857019248/"></a>
+      <div class="c-car-card-sa__pic">
+        <div class="o-img has-darkening-hover c-car-card-sa__img" style="background-color: #969ba0;">
+          <span style="display: block; padding-top: 56.25%"></span>
           <img [src]="getImageFileUrl(car.imageId)" [alt]="car.model">
+        </div>
       </div>
-      <div class="car-card-caption">
-        <span>{{ car.model }}</span>
+      <div class="c-car-card-sa__caption">
+        <span class="c-car-title c-link c-link--text">{{ car.model }}</span>
       </div>
-      <mat-action-row>
-        <button mat-raised-button color="primary" [routerLink]="['/edit', car.id]">Add to logbook</button>
-      </mat-action-row>
-    </mat-card>
+      <div class="c-car-card-sa__info">
+        <div class="c-car-card-sa__owner">
+          <a class="c-link c-link--color00 c-username c-username--wrap" href="/users/vynd"><span>Vynd</span></a>
+        </div>
+        <div class="c-car-card-sa__location"><span title="Днепр, Украина">Днепр, Украина</span></div>
+        <div class="c-car-card-sa__drive" style="border-color: #cc1248;">40</div>
+        <div class="c-car-card-sa__logbook" data-tt="Записей в бортжурнале">38</div>
+      </div>
+      <div class="c-car-card-sa__button">
+        <a class="c-button c-button--primary" href="/r/subaru/forester/501556248857019248/logbook/add">Log to workbook</a>
+      </div>
+    </div>
+    <br/>
   </mat-expansion-panel>
 </mat-accordion>

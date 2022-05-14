@@ -1,51 +1,77 @@
-<mat-card>
-  <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form *ngIf="!isLoading" #loginForm="ngForm" (submit)="onSignup(loginForm)">
-    <mat-form-field class="car-create-field" appearance="fill">
-      <mat-label>Email</mat-label>
+<div class="c-block c-block--content">
+  <div class="o-group o-group--m o-group--v"></div>
+  <p>
+    On this page, you can register a new user. Please fill the form and press 'SignUp' button.
+  </p>
+  <div class="hr">
+    <hr />
+  </div>
+  <div *ngIf="isLoading" class="spinner-container">
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+  </div>
+  <form [formGroup]="form" (submit)="onSignup()">
+    <input type="hidden" value="" />
+    <div class="f-legend">
+      <label>Email</label>
+    </div>
+    <div class="f-field">
       <input
-        matInput
-        placeholder="Enter email"
+        class="c-input f-item"
         type="email"
         name="email"
-        ngModel
-        #emailInput="ngModel"
-        email
-        required
-        >
-        <mat-error *ngIf="emailInput.invalid">Please enter email</mat-error>
-    </mat-form-field>
-    <mat-form-field class="car-create-field" appearance="fill">
-      <mat-label>Username</mat-label>
-      <input
         matInput
-        placeholder="Enter username"
-        name="username"
-        ngModel
-        #usernameInput="ngModel"
-        required
-        username
+        placeholder="Enter email"
+        formControlName="email"
         >
-        <mat-error *ngIf="usernameInput.invalid">Please unique username</mat-error>
-    </mat-form-field>
-    <mat-form-field class="car-create-field" appearance="fill">
-      <mat-label>Password</mat-label>
+      <br>
+      <span *ngIf="email?.errors?.['email'] && (email?.dirty || email?.touched)"
+        class="field-validation-error">{{errorMessages.email}}</span>
+      <span *ngIf="email?.errors?.['required'] && (email?.dirty || email?.touched)"
+        class="field-validation-error">{{errorMessages.required}}</span>
+      <span *ngIf="email?.touched && email?.errors?.['useremailExists']"
+        class="field-validation-error">{{errorMessages.uniqueEmail}}</span>
+    </div>
+    <div class="f-legend">
+      <label >Nickname</label>
+    </div>
+    <div class="f-field">
       <input
+        class="c-input f-item"
+        type="text"
+        name="nickname"
+        matInput
+        placeholder="Enter nickname"
+        formControlName="nickname"
+        >
+      <br>
+      <span *ngIf="nickname?.errors?.['maxlength'] && (nickname?.dirty || nickname?.touched)"
+        class="field-validation-error">{{errorMessages.max64length}}</span>
+      <span *ngIf="nickname?.errors?.['required'] && (nickname?.dirty || nickname?.touched)"
+        class="field-validation-error">{{errorMessages.required}}</span>
+      <span *ngIf="nickname?.errors?.['usernameExists'] && (nickname?.dirty || nickname?.touched)"
+        class="field-validation-error">{{errorMessages.uniqueNickname}}</span>
+    </div>
+    <div class="f-legend">
+      <label for="password">Password</label>
+    </div>
+    <div class="f-field">
+      <input
+        class="c-input f-item"
         type="password"
+        name="password"
         matInput
         placeholder="Enter password"
-        name="password"
-        ngModel
-        #passwordInput="ngModel"
-        required
-        password
-        >
-        <mat-error *ngIf="passwordInput.invalid">Please a valid password</mat-error>
-    </mat-form-field>
-    <hr/>
-    <button
-      mat-raised-button
-      color="accent"
-      type="submit">Signup</button>
+        formControlName="password">
+        <br>
+        <span *ngIf="password?.errors?.['required'] && (password?.dirty || password?.touched)"
+        class="field-validation-error">{{errorMessages.required}}</span>
+    </div>
+    <div class="f-field">
+      <div class="f-group">
+        <div class="f-group__item">
+          <button class="c-button c-button--l c-button--primary u-mobile-100" type="submit">Sign Up</button>
+        </div>
+      </div>
+    </div>
   </form>
-</mat-card>
+</div>
